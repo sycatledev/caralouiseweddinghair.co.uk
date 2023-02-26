@@ -1,4 +1,9 @@
 {
+    "app_name" : "AppCore",
+    "meta" : {
+        "description" : "Welcome to AppCore. This is the default description.",
+        "keywords" : "appcore, sycatle, dev, web, framework, librairy, easy"
+    },
     "database": {
         "host": "127.0.0.1",
         "name" : "sycatle_dev",

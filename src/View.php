@@ -1,5 +1,5 @@
 <?php
-namespace App\Sycatle;
+namespace AppCore;
 
 class View
 {
@@ -8,6 +8,11 @@ class View
     public function __construct(Controller $controller)
     {
         $this->controller = $controller;
+    }
+
+    public function getController() : Controller
+    {
+        return $this->controller;
     }
 
     public function render() : void

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Sycatle;
+namespace AppCore;
 
 class User {
 
@@ -8,18 +8,16 @@ class User {
     {
         $this->id = $userId;
 
-        if ($this->userExistsInDatabase() == false)
-        {
-            $this->disconnect();
-            break;
-        }
-
         $this->init();
     }
 
     private function init()
     {
-        // USER ACTIONS
+        if ($this->userExistsInDatabase() == false)
+        {
+            $this->disconnect();
+            exit;
+        }
     }
 
     private function userExistsInDatabase() : Boolean

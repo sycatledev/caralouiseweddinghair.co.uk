@@ -1,9 +1,9 @@
 <?php
-namespace App\Sycatle;
+namespace AppCore;
+require("./src/Database.php");
+require("./src/Logger.php");
 require("./src/View.php");
 require("./src/Controller.php");
-require("./src/Database.php");
-
 require("./src/entities/User.php");
 
 class Main
@@ -18,8 +18,6 @@ class Main
 
     public function init(string $request) : void
     {
-        var_dump(Database::getInstance()->connectDatabase());
-
         $controller = $this->getController($request);
         $view = new View($controller);
         $view->render();

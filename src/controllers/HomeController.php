@@ -1,13 +1,17 @@
 <?php
-namespace App\Sycatle;
+namespace AppCore;
 
 class HomeController extends Controller
 {
     public function __construct()
     {
         parent::__construct();
-        $this->setTitle('Home Page');
+
+        $this->setDescription("This is the AppCore home page description.");
         $this->setView("./src/views/home.php");
-        $this->setData(['message' => 'Welcome to my website']);
+        $this->addKeywords("homepage, appcore, welcome");
+        $this->setData([
+            "message" => "Welcome to my website"
+        ]);
     }
 }

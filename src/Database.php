@@ -1,5 +1,5 @@
 <?php
-namespace App\Sycatle;
+namespace AppCore;
 
 class Database {
     private static $instance;
@@ -26,8 +26,6 @@ class Database {
             // Création de l'instance PDO de la base de données.
             $this->database = new \PDO("mysql:host=" . Main::getInstance()->getConfig()->database->host . ";dbname=" . Main::getInstance()->getConfig()->database->name . ";charset=utf8", Main::getInstance()->getConfig()->database->user, Main::getInstance()->getConfig()->database->password);
             $this->database->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
-
-            echo("Bien connecté à la bdd");
 
             // Débuguer la connexion à la base de données
             // var_dump($this->database); 

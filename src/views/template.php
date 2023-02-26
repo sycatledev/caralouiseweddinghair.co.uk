@@ -1,11 +1,14 @@
 <!DOCTYPE html>
-<html class="smooth-scroll">
+<html lang="en" class="smooth-scroll">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><?= $this->getController()->getTitle() ?></title>
+    <meta name="description" content="<?= $this->getController()->getDescription() ?>">
+    <meta name="keywords" content="<?= $this->getController()->getKeywords() ?>">
 
-    <title><?= $this->controller->getTitle() ?></title>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
 </head>
 <body>
     <?= $content ?>

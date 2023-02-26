@@ -1,8 +1,8 @@
 <?php ob_start(); ?>
 
-<h1><?= $this->controller->getData()["message"] ?></h1>
+<h1><?= $this->getController()->getData()["message"] ?></h1>
 
 <?php
 $content = ob_get_clean();
-include("./src/views/template.php");
+require("./src/views/template.php");
 ?>

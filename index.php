@@ -10,7 +10,7 @@ if (!isset($_SESSION))
 }
 
 // Requiring dependencies
-use App\Sycatle\Main;
+use AppCore\Main;
 require("./src/Main.php");
 
 // Get current GET request
