@@ -1,15 +1,11 @@
 <?php
-namespace AppCore;
-require("./src/Database.php");
-require("./src/Logger.php");
-require("./src/View.php");
-require("./src/Controller.php");
-require("./src/entities/User.php");
+namespace AsaP;
+use \AsaP\Factories\ControllerFactory;
 
 class Main
 {
     private static $instance;
-    private User $user;
+    private User $currentUser;
 
     public function __construct()
     {
@@ -33,20 +29,16 @@ class Main
         return self::$instance;
     }
 
-    public function getConfig()
+    public function getConfig() : Object
     {
-        return json_decode(file_get_contents("appcore_config.json"));
-    }
-
-    public function getSession() : Array
-    {
-        return $_SESSION;
+        return json_decode(file_get_contents("asap_config.json"));
     }
 
     private function getController(string $controller) : Controller
     {
         // To lowercase from request string
         $controller = strtolower($controller);
+
         // Remove spaces from request string
         $controller = trim($controller);
 
@@ -54,20 +46,26 @@ class Main
         return ControllerFactory::getController($controller);
     }
 
-    public function getCurrentUser() : User | Boolean
+    public function getSession() : Array
     {
-        if (isset($this->getSession()['user_id']) == false) 
-        {
-            return false;
-        }
+        return $_SESSION;
+    }
 
+    public function getCurrentUser() : User | bool
+    {
         $currentUserId = $this->getSession()['user_id'];
 
+        if (isset($currentUserId) == false) 
+            return false;
+
         if (isset($this->currentUser) == false) 
-        {
             $this->currentUser = new User($currentUserId);
-        }
 
         return $this->currentUser;
+    }
+
+    public static function redirect($destination) : void
+    {
+        header(`Location: $destinaton`);
     }
 }

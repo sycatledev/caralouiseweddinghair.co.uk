@@ -4,5 +4,5 @@
 
 <?php
 $content = ob_get_clean();
-require("./src/views/template.php");
+require("./src/templates/template.php");
 ?>

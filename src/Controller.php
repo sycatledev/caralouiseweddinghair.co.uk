@@ -1,6 +1,5 @@
 <?php
-namespace AppCore;
-require("./src/controllers/HomeController.php");
+namespace AsaP;
 
 class Controller
 {
@@ -92,20 +91,5 @@ class Controller
     public function addKeywords(string $keywords) : void 
     {
         $this->keywords = $this->getKeywords() . "," . $keywords;
-    }
-}
-
-class ControllerFactory 
-{
-    public static function getController(string $controller) : Controller
-    {
-        switch ($controller) {
-            case 'home':
-                return new HomeController();
-                break;
-            default:
-                return new ErrorController(404);
-                break;
-        }
     }
 }

@@ -1,5 +1,5 @@
 <?php
-namespace AppCore;
+namespace AsaP;
 
 class Database {
     private static $instance;
@@ -20,7 +20,7 @@ class Database {
         return self::$instance;
     }
 
-    public function connectDatabase() : \PDO | Boolean
+    public function connectDatabase() : \PDO | bool
     {
         try {
             // Création de l'instance PDO de la base de données.

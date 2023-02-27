@@ -1,5 +1,5 @@
 <?php
-namespace AppCore;
+namespace AsaP;
 
 class Logger 
 {

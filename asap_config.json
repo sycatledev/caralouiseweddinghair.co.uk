@@ -1,7 +1,7 @@
 {
-    "app_name" : "AppCore",
+    "app_name" : "AsaP",
     "meta" : {
-        "description" : "Welcome to AppCore. This is the default description.",
+        "description" : "Welcome to AsaP. This is the default description.",
         "keywords" : "appcore, sycatle, dev, web, framework, librairy, easy"
     },
     "database": {

@@ -3,17 +3,17 @@
 /*         @Sycatle's PHP application core - v.1.0
 /* --------------------------------------------------- */
 
-// Initialize sessions
-if (!isset($_SESSION))
-{
-    session_start();
-}
-
 // Requiring dependencies
-use AppCore\Main;
-require("./src/Main.php");
+require("./src/Loader.php");
+use AsaP\Loader;
+Loader::register();
 
-// Get current GET request
+// Initialize session superglobal variable.
+session_start();
+
+// Get current request by retrieving get superglobal variable.
 $request = isset($_GET['request']) ? $_GET['request'] : "home";
 
+// Initialize application core
+use AsaP\Main;
 Main::getInstance()->init($request);

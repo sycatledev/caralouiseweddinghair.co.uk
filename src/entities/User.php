@@ -1,8 +1,12 @@
 <?php
-
-namespace AppCore;
+namespace AsaP\Entities;
 
 class User {
+
+    private int $id;
+    private string $username;
+    private string $mail;
+    private string $password;
 
     function __construct(int $userId) 
     {
@@ -11,29 +15,56 @@ class User {
         $this->init();
     }
 
-    private function init()
+    private function init() : void
     {
-        if ($this->userExistsInDatabase() == false)
+        if (self::userExistsInDatabase() == false)
         {
             $this->disconnect();
             exit;
         }
     }
 
-    private function userExistsInDatabase() : Boolean
+    /**
+     * Get the value of id
+     */ 
+    public function getId() : int
     {
-        // Check if the user exists in the database
-        /* $row = Database::getInstance()->fetch(
-            "SELECT user_id FROM user WHERE user_id = '$this->id'"
-        ); */
+        return $this->id;
+    }
 
+    /**
+     * Get the value of username
+     */ 
+    public function getUsername() : string
+    {
+        return $this->username;
+    }
+
+    /**
+     * Get the value of mail 
+     */ 
+    public function getMail() : string
+    {
+        return $this->mail;
+    }
+
+    /**
+     * Get the value of password
+     */ 
+    public function getPassword() : string
+    {
+        return $this->password;
+    }
+
+    public static function userExistsInDatabase(int $id) : bool
+    {
         return true;
     }
 
     public function disconnect() : void
     {
         unset($_SESSION['user_id']);
-        header("Location: .");
-    }
 
+        Main::redirect(".");
+    }
 }
