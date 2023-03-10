@@ -22,7 +22,7 @@ class HomeController extends Controller
 
     public function handleRequest() : void
     {
-        // var_dump($_POST);
+        // var_dump($_POST); 
     }
 
     private function initArticles() : void
