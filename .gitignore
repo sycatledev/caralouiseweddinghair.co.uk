@@ -105,3 +105,6 @@ dist
 
 # App Core Configration file
 asap_config.json
+
+uploads/
+vendor/
