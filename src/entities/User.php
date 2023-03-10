@@ -20,7 +20,7 @@ class User {
         // {
         //     $this->disconnect();
         //     exit;
-        // } 
+        // }
     }
 
     /**
