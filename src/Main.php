@@ -1,10 +1,16 @@
 <?php
+
 namespace AsaP;
-use \AsaP\Factories\ControllerFactory;
+
+use AsaP\Factories\ControllerFactory;
+use AsaP\Entities\User;
+use AsaP\Utils\Controller;
+use AsaP\Utils\View;
 
 class Main
 {
     private static $instance;
+    // private $router;
     private User $currentUser;
 
     public function __construct()
@@ -12,29 +18,30 @@ class Main
         self::$instance = $this;
     }
 
-    public function init(string $request) : void
+    public function init(): void
     {
-        $controller = $this->getController($request);
-        $view = new View($controller);
-        $view->render();
+        // $controller = $this->getController($request);
+        // $view = new View($controller);
+        // $view->render();
+
+        // $router->process();
     }
 
-    public static function getInstance() : Main
+    public static function getInstance(): Main
     {
-        if (self::$instance === null)
-        {
+        if (self::$instance === null) {
             self::$instance = new self();
         }
 
         return self::$instance;
     }
 
-    public function getConfig() : Object
+    public function getConfig(): Object
     {
         return json_decode(file_get_contents("asap_config.json"));
     }
 
-    private function getController(string $controller) : Controller
+    public function getController(string $controller) : Controller
     {
         // To lowercase from request string
         $controller = strtolower($controller);
@@ -46,26 +53,31 @@ class Main
         return ControllerFactory::getController($controller);
     }
 
-    public function getSession() : Array
+    public function getSession(): array
     {
         return $_SESSION;
     }
 
-    public function getCurrentUser() : User | bool
+    public function getCurrentUser(): User | bool
     {
         $currentUserId = $this->getSession()['user_id'];
 
-        if (isset($currentUserId) == false) 
+        if (isset($currentUserId) == false)
             return false;
 
-        if (isset($this->currentUser) == false) 
+        if (isset($this->currentUser) == false)
             $this->currentUser = new User($currentUserId);
 
         return $this->currentUser;
     }
 
-    public static function redirect($destination) : void
+    public static function redirect($destination): void
     {
-        header(`Location: $destinaton`);
+        header(`Location: $destination`);
+    }
+
+    public function getRootDirectory(): string
+    {
+        return "http://localhost:80/AppCore";
     }
 }

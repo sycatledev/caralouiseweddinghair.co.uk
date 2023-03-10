@@ -104,4 +104,4 @@ dist
 .tern-port
 
 # App Core Configration file
-# asap_config.json
+asap_config.json

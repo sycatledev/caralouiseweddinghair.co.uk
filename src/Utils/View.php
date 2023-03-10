@@ -1,5 +1,8 @@
 <?php
-namespace AsaP;
+namespace AsaP\Utils;
+
+use AsaP\Utils\Controller;
+use AsaP\Main;
 
 class View
 {
@@ -18,6 +21,9 @@ class View
     public function render() : void
     {
         extract($this->controller->getData()); // Extract data variables into the current scope
+        
         include($this->controller->getView()); // Include the view file
     }
 }
+
+?>

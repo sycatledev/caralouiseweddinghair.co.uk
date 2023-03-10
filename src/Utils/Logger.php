@@ -1,5 +1,5 @@
 <?php
-namespace AsaP;
+namespace AsaP\Utils;
 
 class Logger 
 {
@@ -19,3 +19,5 @@ class Logger
         return self::$instance;
     }
 }
+
+?>

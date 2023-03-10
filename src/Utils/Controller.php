@@ -1,20 +1,44 @@
 <?php
-namespace AsaP;
+namespace AsaP\Utils;
+use AsaP\Main;
 
-class Controller
+abstract class Controller
 {
     private string $title;
     private string $description;
     private string $keywords;
     private string $viewPath;
     private array $data;
+    private bool $header;
+    private bool $footer;
+    private string $favicon;
+    private array $javascripts;
+    private array $cascadelinks; 
 
     public function __construct()
     {
+        $this->handleRequest();
+
         $this->title = "";
         $this->description = "";
         $this->keywords = "";
         $this->data = [];
+        $this->header = true;
+        $this->footer = true;
+        $this->favicon = "";
+        $this->cascadelinks = [
+            Main::getInstance()->getRootDirectory() . '/public/styles/output.css'
+        ];
+        $this->javascripts = [
+            Main::getInstance()->getRootDirectory() . '/public/scripts/Cookies.js',
+            Main::getInstance()->getRootDirectory() . '/public/scripts/Theme.js',
+            Main::getInstance()->getRootDirectory() . '/node_modules/flowbite/dist/flowbite.min.js'
+        ];
+    }
+
+    public function handleRequest() : void
+    {
+        return;
     }
 
     public function getTitle() : string
@@ -92,4 +116,44 @@ class Controller
     {
         $this->keywords = $this->getKeywords() . "," . $keywords;
     }
+
+    public function hasHeader() : bool
+    {
+        return $this->header;
+    }
+
+    public function hasFooter() : bool
+    {
+        return $this->footer;
+    }
+
+    public function setHeader(bool $hasHeader) : void
+    {
+        $this->header = $hasHeader;
+    }
+
+    public function setFooter(bool $hasFooter) : void
+    {
+        $this->footer = $hasFooter;
+    }
+
+    public function getJavascripts() : array
+    {
+        return $this->javascripts;
+    }
+
+    public function getCascadeLinks() : array
+    {
+        return $this->cascadelinks; 
+    }
+
+    /**
+     * Get the value of favicon
+     */ 
+    public function getFavicon()
+    {
+        return $this->favicon;
+    }
 }
+
+?>
