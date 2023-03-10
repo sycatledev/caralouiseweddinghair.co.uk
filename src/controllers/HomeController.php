@@ -17,7 +17,6 @@ class HomeController extends Controller
         $this->setTitle('Home');
         $this->setDescription("This is the AsaP home page description.");
         $this->addKeywords("homepage, asap, welcome");
-
         $this->setView("./src/templates/pages/home.php");
     }
 

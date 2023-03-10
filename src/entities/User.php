@@ -11,17 +11,16 @@ class User {
     function __construct(int $userId) 
     {
         $this->id = $userId;
-
         $this->init();
     }
 
     private function init() : void
     {
-        if (self::userExistsInDatabase() == false)
-        {
-            $this->disconnect();
-            exit;
-        }
+        // if (self::userExistsInDatabase() == false)
+        // {
+        //     $this->disconnect();
+        //     exit;
+        // }
     }
 
     /**
