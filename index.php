@@ -1,6 +1,10 @@
-<?php namespace AsaP;
-/* --------------------------------------------------- */
-/*         @Sycatle's PHP application core - v.1.0
+<?php
+
+// Define namespace "AsaP"
+namespace AsaP;
+
+// Description of the code with author and version
+// Sycatle's PHP application core - v.1.0
 /* --------------------------------------------------- */
 
 // Initialize session superglobal variable.
@@ -8,18 +12,20 @@ session_start();
 
 // Requiring external dependencies
 require './vendor/autoload.php';
+
 // Requiring inside dependencies
 require("./src/Loader.php");
-use \AsaP\Loader;
 Loader::register();
 
+// Import classes from AsaP namespace
 use \AsaP\Utils\Router;
 use \AsaP\Utils\Request;
-use \AsaP\Main;
 
+// Create a new Request instance with information about the HTTP request
 $request = new Request($_SERVER['REQUEST_METHOD'], $_SERVER['REQUEST_URI']);
-$router = new Router($request);
-$response = $router->process();
 
-// Initialize application core
-Main::getInstance()->init();
+// Create a new Router instance with the Request object as an argument
+$router = new Router($request);
+
+// Process the request and store the response in $response
+$response = $router->process();

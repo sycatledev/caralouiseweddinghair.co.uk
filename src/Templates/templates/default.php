@@ -23,13 +23,13 @@ use AsaP\Main;
         <script src="<?= $js ?>" defer></script>
     <?php } ?>
 </head>
-<body class="text-black dark:text-white">
+<body class="bg-white dark:bg-slate-800 text-black dark:text-white">
     <?php if ($this->getController()->hasHeader()) 
     {
         include("./src/Templates/layouts/header.php");
     } ?>
 
-    <main class="min-h-screen bg-gradient-to-b from-white to-slate-200 dark:from-slate-800 dark:to-black">
+    <main class="min-h-screen bg-gradient-to-b from-white to-slate-200 dark:from-slate-800 dark:to-black py-14">
         <?= $content ?>
     </main>
 

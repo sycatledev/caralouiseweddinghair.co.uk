@@ -1,31 +1,36 @@
-<?php 
-ob_start(); 
+<?php
+ob_start();
 
-use AsaP\Main;
 $lastArticle = $this->getController()->getLastArticle();
 ?>
 
 <a title="<?= $lastArticle->getTitle() ?>" href="<?= $lastArticle->getHref() ?>" class="group w-full shadow-sm duration-300 border-b border-b-slate-300 dark:border-b-slate-600 overflow-hidden relative">
     <div class="max-w-7xl w-full mx-auto z-20">
         <span class="font-bold text-xl sm:text-2xl lg:text-3xl xl:text-4xl bg-white dark:bg-black p-1 absolute bottom-0 m-2"><?= $lastArticle->getTitle() ?></span>
-    </div> 
+    </div>
 
     <img src="<?= $lastArticle->getThumbnail() ?>" class="w-full flex h-72 lg:h-80 object-cover object-center">
 </a>
 
 <section class="mx-auto max-w-7xl py-10 px-2 space-y-4 min-h-screen">
-    <h1 class="font-bold text-2xl items-center">Articles <span class="text-gray-500 dark:text-gray-400 text-sm font-thin">- sorted by creation date</span></h1>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        <?php foreach($this->getController()->getArticles() as $article) { ?>
-            <a title="<?= $article->getTitle() ?>" href="<?= $article->getHref() ?>" data-article-id="<?= $article->getId() ?> " class="group col-span-1 rounded-xl min-h-[12rem] hover:shadow-sm duration-300 border border-slate-300 hover:border-slate-500 dark:border-slate-600 dark:hover:border-slate-300 overflow-hidden relative">
-                <div class="absolute bottom-0 z-20 m-2">
-                    <span class="font-bold text-lg lg:text-xl bg-white text-black dark:bg-black dark:text-white p-1"><?= $article->getTitle() ?></span>
-                </div> 
+    <nav class="flex" aria-label="Breadcrumb">
+        <ol class="inline-flex items-center space-x-2">
+            <li aria-current="page" class="inline-flex items-center">
+                <div class="inline-flex items-center text-sm font-medium text-gray-700 dark:text-gray-400">
+                    <svg aria-hidden="true" class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"></path>
+                    </svg>
+                    Blog
+                </div>
+            </li>
+        </ol>
+    </nav>
+    
 
-                <img src="<?= $article->getThumbnail() ?>" class="h-full w-full blur-[1.5px] group-hover:blur-0 object-cover object-center scale-110 group-hover:scale-100 duration-300">
-            </a>
-        <?php } ?>
-    </div>
+    <?php
+    $articles = $this->getController()->getArticles();
+    include("./src/Templates/components/articles_grid.php");
+    ?>
 </section>
 
 

@@ -1,32 +1,41 @@
 <?php
+
 namespace AsaP;
 
+// A class that loads PHP classes automatically
 class Loader
 {
-    public static function register() : bool
+    // Registers the autoloader
+    public static function register(): bool
     {
+        // spl_autoload_register() allows registering multiple autoload functions
+        // It returns true if the registration was successful, false otherwise
         return \spl_autoload_register(array(__CLASS__, 'includeClass'));
     }
 
-    public static function unregister() : bool
+    // Unregisters the autoloader
+    public static function unregister(): bool
     {
+        // spl_autoload_unregister() allows unregistering an autoload function
+        // It returns true if the function was successfully unregistered, false otherwise
         return \spl_autoload_unregister(array(__CLASS__, 'includeClass'));
     }
 
-    public static function includeClass($class) : void
+    // Includes a class file
+    public static function includeClass($class): void
     {
-        if (strpos($class, __NAMESPACE__ . "\\") === 0)
-        {
+        // Checks if the class is in the AsaP namespace
+        if (strpos($class, __NAMESPACE__ . "\\") === 0) {
+            // Removes the namespace from the class name
             $class = \str_replace(__NAMESPACE__ . "\\", "", $class);
+            // Constructs the path to the class file
             $class = "." . DIRECTORY_SEPARATOR . "src" . DIRECTORY_SEPARATOR . $class . ".php";
 
+            // Checks if the class file exists
             if (\file_exists($class)) {
-                // echo "Included class: $class"; // Debugging statement
+                // Includes the class file
                 include_once($class);
             }
         }
-
     }
 }
-
-?>

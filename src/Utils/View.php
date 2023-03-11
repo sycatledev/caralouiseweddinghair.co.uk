@@ -1,8 +1,8 @@
 <?php
+
 namespace AsaP\Utils;
 
 use AsaP\Utils\Controller;
-use AsaP\Main;
 
 class View
 {
@@ -13,17 +13,27 @@ class View
         $this->controller = $controller;
     }
 
-    public function getController() : Controller
+    /**
+     * Get the controller instance associated with this view.
+     *
+     * @return Controller
+     */
+    public function getController(): Controller
     {
         return $this->controller;
     }
 
-    public function render() : void
+    /**
+     * Render the view.
+     *
+     * This method extracts the data variables from the controller and includes the view file.
+     */
+    public function render(): void
     {
-        extract($this->controller->getData()); // Extract data variables into the current scope
-        
-        include($this->controller->getView()); // Include the view file
+        // Extract data variables from the controller into the current scope
+        extract($this->controller->getData());
+
+        // Include the view file
+        include($this->controller->getView());
     }
 }
-
-?>

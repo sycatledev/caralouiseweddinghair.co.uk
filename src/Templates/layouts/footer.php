@@ -1,4 +1,4 @@
-<footer class="p-4 bg-slate-200 sm:p-6 dark:bg-black">
+<footer class="px-4 pb-8 pt-20 bg-slate-200 dark:bg-black">
       <div class="container mx-auto">
         <div class="md:flex md:justify-between items-center space-y-4">
             <a href="." class="flex items-center">
