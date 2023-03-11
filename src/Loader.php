@@ -25,9 +25,9 @@ class Loader
     public static function includeClass($class): void
     {
         // Checks if the class is in the AsaP namespace
-        if (strpos($class, __NAMESPACE__ . "\\") === 0) {
+        if (strpos($class, __NAMESPACE__ . DIRECTORY_SEPARATOR) === 0) {
             // Removes the namespace from the class name
-            $class = \str_replace(__NAMESPACE__ . "\\", "", $class);
+            $class = \str_replace(__NAMESPACE__ . DIRECTORY_SEPARATOR, "", $class);
             // Constructs the path to the class file
             $class = "." . DIRECTORY_SEPARATOR . "src" . DIRECTORY_SEPARATOR . $class . ".php";
 
