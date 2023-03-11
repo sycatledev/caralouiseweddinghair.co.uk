@@ -29,7 +29,7 @@ class Loader
             // Removes the namespace from the class name
             $class = \str_replace(__NAMESPACE__ . DIRECTORY_SEPARATOR, "", $class);
             // Constructs the path to the class file
-            $class = "." . DIRECTORY_SEPARATOR . "src" . DIRECTORY_SEPARATOR . $class . ".php";
+            $class = realpath("." . DIRECTORY_SEPARATOR . 'src' . DIRECTORY_SEPARATOR . $class . '.php');
 
             // Checks if the class file exists
             if (\file_exists($class)) {
