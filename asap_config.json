@@ -1,14 +1,38 @@
 {
     "app_name" : "AsaP",
+    "env" : "dev",
     "meta" : {
         "description" : "Welcome to AsaP. This is the default description.",
-        "keywords" : "appcore, sycatle, dev, web, framework, librairy, easy"
+        "keywords" : "appcore,sycatle,dev,web,framework,library,easy"
     },
-    "database": {
-        "host": "127.0.0.1",
-        "name" : "asap",
-        "port" : "3306",
-        "user" : "root",
-        "password" : "root"
+    "dev" : {
+        "url" : "http://localhost:80/AppCore",
+        "database": {
+            "host": "127.0.0.1",
+            "name" : "asap",
+            "port" : "3306",
+            "user" : "root",
+            "password" : "root"
+        }
+    },
+    "prod" : {
+        "url" : "http://localhost:80/AppCore",
+        "database": {
+            "host": "127.0.0.1",
+            "name" : "asap",
+            "port" : "3306",
+            "user" : "root",
+            "password" : "root"
+        }
+    },
+    "debug" : {
+        "url" : "http://localhost:80/AppCore",
+        "database": {
+            "host": "127.0.0.1",
+            "name" : "asap",
+            "port" : "3306",
+            "user" : "root",
+            "password" : "root"
+        }
     }
 }

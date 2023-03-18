@@ -2,12 +2,12 @@
 
 namespace AsaP\Controllers;
 
-use AsaP\Utils\Controller;
+use AsaP\Controller;
 use AsaP\Repositories\ArticleRepository;
 use AsaP\Repositories\CategoryRepository;
 
-// Define the HomeController class which extends the Controller class
-class HomeController extends Controller
+// Define the BlogController class which extends the Controller class
+class BlogController extends Controller
 {
     // Define a private property to store the articles
     private array $articles;
@@ -18,7 +18,10 @@ class HomeController extends Controller
     {
         // Call the parent constructor method
         parent::__construct();
+    }
 
+    public function setup() : void
+    {
         // Initialize the articles
         $this->articles = ArticleRepository::getPublicArticlesByPostDate();
         $this->categories = CategoryRepository::getCategories();

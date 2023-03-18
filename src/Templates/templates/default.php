@@ -1,30 +1,32 @@
 <?php 
-use AsaP\Main;
+
+$controller = $this->getController();
+
 ?>
 
 <!DOCTYPE html>
 <html lang="en" class="smooth-scroll <?= isset($_COOKIE['theme']) && $_COOKIE['theme'] == "dark" ? "dark" : "" ?>">
 <head>
-    <title><?= $this->getController()->getTitle() ?></title>
-    <meta name="description" content="<?= $this->getController()->getDescription() ?>">
-    <meta name="keywords" content="<?= $this->getController()->getKeywords() ?>">
+    <title><?= $controller->getTitle() ?></title>
+    <meta name="description" content="<?= $controller->getDescription() ?>">
+    <meta name="keywords" content="<?= $controller->getKeywords() ?>">
 
-    <link rel="shortcut icon" href="<?= $this->getController()->getFavicon() ?>" type="image/x-icon">
+    <link rel="shortcut icon" href="<?= $controller->getFavicon() ?>" type="image/x-icon">
 
     <meta charset="UTF-8">
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <?php foreach ($this->getController()->getCascadeLinks() as $css) { ?>
+    <?php foreach ($controller->getStylesheets() as $css) { ?>
         <link rel="stylesheet" href="<?= $css ?>">
     <?php } ?>
 
-    <?php foreach ($this->getController()->getJavascripts() as $js) { ?>
+    <?php foreach ($controller->getJavascripts() as $js) { ?>
         <script src="<?= $js ?>" defer></script>
     <?php } ?>
 </head>
 <body class="bg-white dark:bg-slate-800 text-black dark:text-white">
-    <?php if ($this->getController()->hasHeader()) 
+    <?php if ($controller->hasHeader()) 
     {
         include("./src/Templates/layouts/header.php");
     } ?>
@@ -33,7 +35,7 @@ use AsaP\Main;
         <?= $content ?>
     </main>
 
-    <?php if ($this->getController()->hasFooter()) 
+    <?php if ($controller->hasFooter()) 
     {
         include("./src/Templates/layouts/footer.php");
     } ?>

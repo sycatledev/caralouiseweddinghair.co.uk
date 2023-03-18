@@ -1,8 +1,8 @@
 <?php
 
-namespace AsaP\Utils;
+namespace AsaP;
 
-use AsaP\Utils\Controller;
+use AsaP\Controller;
 
 class View
 {

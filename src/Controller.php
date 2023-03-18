@@ -1,6 +1,6 @@
 <?php
 
-namespace AsaP\Utils;
+namespace AsaP;
 
 use AsaP\Main;
 
@@ -30,16 +30,23 @@ abstract class Controller
         $this->data = [];
         $this->header = true;
         $this->footer = true;
-        $this->favicon = "";
+        $this->favicon = "favicon.ico";
         $this->cascadelinks = [
-            Main::getInstance()->getRootDirectory() . '/public/styles/output.css'
+            Main::getInstance()->getRootUrl() . '/public/styles/output.css'
         ];
         $this->javascripts = [
-            Main::getInstance()->getRootDirectory() . '/public/scripts/Cookies.js',
-            Main::getInstance()->getRootDirectory() . '/public/scripts/Theme.js',
-            Main::getInstance()->getRootDirectory() . '/public/scripts/Nav.js',
-            Main::getInstance()->getRootDirectory() . '/node_modules/flowbite/dist/flowbite.min.js'
+            Main::getInstance()->getRootUrl() . '/public/scripts/Cookies.js',
+            Main::getInstance()->getRootUrl() . '/public/scripts/Theme.js',
+            Main::getInstance()->getRootUrl() . '/public/scripts/Nav.js',
+            Main::getInstance()->getRootUrl() . '/node_modules/flowbite/dist/flowbite.min.js'
         ];
+
+        $this->setup();
+    }
+
+    public function setup() : void
+    {
+        return; // Do nothing by default
     }
 
     // Methods
@@ -163,7 +170,7 @@ abstract class Controller
     }
 
     // This function returns the cascade links array
-    public function getCascadeLinks(): array
+    public function getStylesheets(): array
     {
         return $this->cascadelinks;
     }

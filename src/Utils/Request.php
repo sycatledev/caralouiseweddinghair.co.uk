@@ -1,4 +1,5 @@
 <?php
+
 namespace AsaP\Utils;
 
 class Request
@@ -23,5 +24,35 @@ class Request
     public function getUri()
     {
         return $this->uri;
+    }
+
+    public function getPostRequests(): array
+    {
+        return $_POST;
+    }
+
+    public function getPostRequest($index): string
+    {
+        return $_POST[$index];
+    }
+
+    public function setPostRequest($index, string $value): void
+    {
+        $_POST[$index] = $value;
+    }
+
+    public function getGetRequests(): array
+    {
+        return $_GET;
+    }
+
+    public function getGetRequest($index): string
+    {
+        return $this->getGetRequests()[$index];
+    }
+
+    public function setGetRequest($index, string $value): void
+    {
+        $_GET[$index] = $value;
     }
 }

@@ -1,6 +1,8 @@
 <?php
 namespace AsaP\Entities;
 
+use AsaP\Main;
+
 class User {
 
     private int $id;
@@ -64,6 +66,6 @@ class User {
     {
         unset($_SESSION['user_id']);
 
-        // Main::redirect(".");
+        Main::redirect(".");
     }
 }

@@ -2,10 +2,9 @@
 
 namespace AsaP\Controllers;
 
-use AsaP\Utils\Database;
 use AsaP\Entities\Article;
 use AsaP\Repositories\ArticleRepository;
-use AsaP\Utils\Controller;
+use AsaP\Controller;
 
 class ArticleController extends Controller
 {
@@ -15,17 +14,20 @@ class ArticleController extends Controller
 
     public function __construct($args)
     {
-        parent::__construct();
-
         $this->args = $args;
 
+        parent::__construct();
+    }
+
+    public function setup() : void
+    {
         $this->article = ArticleRepository::getArticle($this->args['id']);
         $this->articles = ArticleRepository::getAllArticlesButExcept($this->args['id']);
 
         // Set metadata for the article page
         $this->setTitle($this->article->getTitle());
         $this->setDescription($this->article->getTitle());
-        $this->addKeywords("article, hello, test");
+        $this->addKeywords("article,hello,test");
 
         $this->setView("./src/templates/pages/article.php");
     }

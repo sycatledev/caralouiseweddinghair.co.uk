@@ -18,7 +18,7 @@ require("./src/Loader.php");
 Loader::register();
 
 // Import classes from AsaP namespace
-use \AsaP\Utils\Router;
+use \AsaP\Router;
 use \AsaP\Utils\Request;
 
 // Create a new Request instance with information about the HTTP request

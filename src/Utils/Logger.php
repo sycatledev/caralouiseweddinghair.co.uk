@@ -1,20 +1,21 @@
 <?php
+
 namespace AsaP\Utils;
 
-class Logger 
+class Logger
 {
     private static $instance;
 
     // Initializes the Logger instance
-    function __construct() {
+    function __construct()
+    {
         self::$instance = $this;
     }
 
     // Gets the Logger instance or creates a new one if none exists
-    public static function getInstance() : Logger
+    public static function getInstance(): Logger
     {
-        if (self::$instance === null)
-        {
+        if (self::$instance === null) {
             self::$instance = new self();
         }
 

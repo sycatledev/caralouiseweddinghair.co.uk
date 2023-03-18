@@ -5,13 +5,13 @@ namespace AsaP\Entities;
 class Category
 {
     // Declare properties
-    public $category_id;
-    public $category_name;
+    public int $category_id;
+    public string $category_name;
 
     /**
      * Get the value of id
      */
-    public function getId()
+    public function getId() : int
     {
         return $this->category_id;
     }
@@ -21,17 +21,15 @@ class Category
      *
      * @return  self
      */
-    public function setId($id)
+    public function setId($id) : void
     {
         $this->category_id = $id;
-
-        return $this;
     }
 
     /**
      * Get the valuename
      */
-    public function getName()
+    public function getName() : string
     {
         return $this->category_name;
     }
@@ -41,10 +39,8 @@ class Category
      *
      * @return  self
      */
-    public function setName($category_name)
+    public function setName($category_name) : void
     {
         $this->category_name = $category_name;
-
-        return $this->category_name;
     }
 }

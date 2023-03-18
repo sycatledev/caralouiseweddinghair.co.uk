@@ -24,18 +24,17 @@ class Loader
     // Includes a class file
     public static function includeClass($class): void
     {
-        // Checks if the class is in the AsaP namespace
-        if (strpos($class, __NAMESPACE__ . DIRECTORY_SEPARATOR) === 0) {
-            // Removes the namespace from the class name
-            $class = \str_replace(__NAMESPACE__ . DIRECTORY_SEPARATOR, "", $class);
-            // Constructs the path to the class file
-            $class = realpath("." . DIRECTORY_SEPARATOR . 'src' . DIRECTORY_SEPARATOR . $class . '.php');
+        // Removes the namespace from the class name
+        $class = \str_replace(__NAMESPACE__ . "\\", "", $class);
+        $class = \str_replace("\\", DIRECTORY_SEPARATOR, $class);
 
-            // Checks if the class file exists
-            if (\file_exists($class)) {
-                // Includes the class file
-                include_once($class);
-            }
+        // Constructs the path to the class file
+        $class = "." . DIRECTORY_SEPARATOR . 'src' . DIRECTORY_SEPARATOR . $class . '.php';
+
+        // Checks if the class file exists
+        if (\file_exists($class)) {
+            // Includes the class file
+            include_once($class);
         }
     }
 }

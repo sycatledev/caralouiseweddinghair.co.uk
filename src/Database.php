@@ -1,5 +1,7 @@
 <?php
-namespace AsaP\Utils;
+
+namespace AsaP;
+
 use \PDO;
 use \AsaP\Main;
 
@@ -8,18 +10,27 @@ class Database
     private static \PDO $database;
 
     // Establishes a connection to the database
-    private static function getPDO() : PDO
+    private static function getPDO(): PDO
     {
+        $credentials = self::getCredentials();
+
         // If no connection exists, create one
-        if (!isset(SELF::$database))
-        {
-            $database = new PDO("mysql:host=" . Main::getInstance()->getConfig()->database->host . ";dbname=" . Main::getInstance()->getConfig()->database->name . ";charset=utf8", Main::getInstance()->getConfig()->database->user, Main::getInstance()->getConfig()->database->password);
+        if (!isset(SELF::$database)) {
+            $database = new PDO("mysql:host=" . $credentials->host . ";dbname=" . $credentials->name . ";charset=utf8", $credentials->user, $credentials->password);
             $database->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
             SELF::$database = $database;
         }
 
         return SELF::$database;
+    }
+
+    private static function getCredentials()
+    {
+        $config = Main::getInstance()->getConfig();
+        $env = Main::getInstance()->getEnvironment();
+
+        return $config->$env->database;
     }
 
     // Executes an unsecure query (SQL Injection possible)
@@ -40,5 +51,4 @@ class Database
 
         return $results;
     }
-
 }
