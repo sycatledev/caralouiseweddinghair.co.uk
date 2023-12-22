@@ -78,6 +78,13 @@ class Router extends Main
                 $view = new View($controller);
                 $view->render();
             });
+            
+            $r->get($prefix . "/contact", function ($args) {
+                // TODO: Add route for contact page with ContactController
+                $controller = new HomeController($args);
+                $view = new View($controller);
+                $view->render();
+            });
             $r->get($prefix . "/legal-mentions", function () {
                 // Handle legal mentions page route with LegalMentionsController
                 $controller = new LegalMentionsController();
