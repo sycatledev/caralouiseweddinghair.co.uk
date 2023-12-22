@@ -4,7 +4,7 @@
     "meta" : {
         "description" : "Find your wedding hair stylist in the North West of England.",
         "keywords" : "développeur web, freelance, indépendant, collaboration, talents informatiques, opportunités professionnelles, mise en relation, réussite entrepreneuriale, plateforme de talents",
-        "author" : "UncoreStudio",
+        "author" : "Sycatle.dev",
         "primary_color" : "#3dd577"
     },
     "analytics" : {
@@ -13,7 +13,7 @@
         }
     },
     "dev" : {
-        "url" : "http://localhost/caralouise",
+        "url" : "http://localhost/caralouiseweddinghair.co.uk",
         "database": {
             "host": "127.0.0.1",
             "name" : "asap",
@@ -23,7 +23,7 @@
         }
     },
     "prod" : {
-        "url" : "https://caralouise.sycatle.dev",
+        "url" : "https://caralouiseweddinghair.co.uk.sycatle.dev",
         "database": {
             "host": "127.0.0.1",
             "name" : "asap",
@@ -33,7 +33,7 @@
         }
     },
     "debug" : {
-        "url" : "http://localhost:80/AppCore",
+        "url" : "http://localhost/caralouiseweddinghair.co.uk",
         "database": {
             "host": "127.0.0.1",
             "name" : "asap",

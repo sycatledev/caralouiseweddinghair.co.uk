@@ -70,7 +70,7 @@ class Router extends Main
         // Define routes using FastRoute syntax
         return FastRoute\simpleDispatcher(function (FastRoute\RouteCollector $r) {
             // Define route prefix (if dev environment)
-            $prefix = $this->getEnvironment() === "dev" ? "/caralouise" : "";
+            $prefix = $this->getEnvironment() === "dev" ? "/caralouiseweddinghair.co.uk" : "";
     
             $r->get($prefix . "/", function ($args) {
                 // Handle home page route with HomeController
